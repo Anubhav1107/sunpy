@@ -427,3 +427,12 @@ def test_skycoord_hpc(args, kwargs):
         hgs = sc.transform_to("heliographic_stonyhurst")
 
     assert isinstance(hgs.frame, HeliographicStonyhurst)
+    
+
+#Test case for adding angular radius function in HelioProjective class
+
+def test_angular_radius():
+    coord = frames.Helioprojective(0*u.deg,0*u.deg,5*u.km,obstime="2010/01/01T00:00:00", observer="earth")    
+    sc = SkyCoord(0*u.deg, 0*u.deg, 5*u.km,obstime="2010/01/01T00:00:00", observer="earth", frame="helioprojective")
+    assert coord.angular_radius!=sc.angular_radius
+
